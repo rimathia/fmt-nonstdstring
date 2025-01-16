@@ -40,4 +40,14 @@ int main()
     std::cout << std::string(nonstdstring::fmt("{}", 13)) << "\n";
     std::cout << std::string(nonstdstring::fmt("{:.4f}", 1.0 / 3.0)) << "\n";
     std::cout << std::string(nonstdstring::fmt("{}, {}", 13, Importance::low)) << "\n";
+
+    std::cout << std::string(nonstdstring::sprintf("%s %d\n", "sprintf", 13));
+    try
+    {
+        std::cout << std::string(nonstdstring::sprintf("%s %d\n", 13, 13));
+    }
+    catch (const fmt::format_error &error)
+    {
+        std::cout << "formatting error: " << error.what() << "\n";
+    }
 }
